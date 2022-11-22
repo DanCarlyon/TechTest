@@ -7,9 +7,15 @@ spl_autoload_register(function ($class_name) {
     include 'classes/' . $class_name . '.php';
 });
 
+/**
+ * These scenarios would certainly be a great candidate for some unit testing
+ * To ensure the functionality is correct and protected through changes
+ */
+
 // Requires credentials for your database
 $db = new Database('', '', '', '');
-$pricingClass = new Prices($db);
+$customerClass = new Customer($db);
+$pricingClass = new Prices($db, $customerClass);
 
 // Running this via console should output the results
 // php index.php
